@@ -16,4 +16,6 @@ public:
 
 private:
     std::chrono::milliseconds shooting_feedback_start_time_;
+
+    [[nodiscard]] bool should_feedback() const;
 };

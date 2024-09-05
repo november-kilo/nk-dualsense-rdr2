@@ -18,11 +18,6 @@ void shooting_feedback::init() {
     init_called_ = true;
 }
 
-std::chrono::milliseconds shooting_feedback::get_or_default(const std::string& property, long default_value) {
-    const prop_value value = properties::get_instance().get(property, prop_value{default_value});
-    return std::chrono::milliseconds{std::get<long>(value)};
-}
-
 std::chrono::milliseconds shooting_feedback::get_shooting_feedback_ms(const Hash weapon_hash) {
     if (!init_called_) {
         init();
@@ -41,8 +36,9 @@ void shooting_feedback::add_shooting_feedback_ms(const std::string& ammo_type,
     map[util::get_hash(ammo_type)] = feedback_time;
 }
 
-std::chrono::milliseconds shooting_feedback::get_or_default_feedback_ms(const std::string& key, const int default_value) {
-    return get_or_default(key, default_value);
+std::chrono::milliseconds shooting_feedback::get_or_default_feedback_ms(const std::string& property, const long default_value) {
+    const prop_value value = properties::get_instance().get(property, prop_value{default_value});
+    return std::chrono::milliseconds{std::get<long>(value)};
 }
 
 std::vector<std::pair<std::string, std::chrono::milliseconds>> shooting_feedback::create_shooting_feedback_ms_array() {
