@@ -1,13 +1,12 @@
 ﻿#include "dual_sense_controller.h"
 
 void dual_sense_controller::set_right_trigger_rumble(const bool rumbling) {
-    DS5W::DeviceContext device_context = mod_context::get_instance().get_device_context();
-
     if (rumbling) {
         DS5W::DS5OutputState ds5_output_state;
         ZeroMemory(&ds5_output_state, sizeof(DS5W::DS5OutputState));
         ds5_output_state.leftRumble = 0;
         ds5_output_state.rightRumble = 255;
+        DS5W::DeviceContext device_context = mod_context::get_instance().get_device_context();
         DS5W::setDeviceOutputState(&device_context, &ds5_output_state);
     }
 }

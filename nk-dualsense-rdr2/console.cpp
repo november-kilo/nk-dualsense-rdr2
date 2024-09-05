@@ -3,9 +3,8 @@
 namespace {
     void open_file_stream(const char* filename, const char* mode, FILE* stream) {
         FILE* fp;
-        const errno_t err = freopen_s(&fp, filename, mode, stream);
 
-        if (err != 0) {
+        if (const errno_t err = freopen_s(&fp, filename, mode, stream); err != 0) {
             std::cerr << "Failed to open " << filename << '\n';
         }
     }

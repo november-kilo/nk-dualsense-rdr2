@@ -9,9 +9,7 @@ std::chrono::milliseconds shooting_feedback::default_shooting_feedback_ms_ = std
 std::unordered_map<Hash, std::chrono::milliseconds> shooting_feedback::shooting_feedback_times_;
 
 void shooting_feedback::init() {
-    console::write("creating feedback array");
     auto ammo_types = create_shooting_feedback_ms_array();
-    console::write("feedback array created");
 
     for (const auto& [ammo_type, feedback_time] : ammo_types) {
         add_shooting_feedback_ms(ammo_type, feedback_time, shooting_feedback_times_);
@@ -22,11 +20,14 @@ void shooting_feedback::init() {
 
 std::chrono::milliseconds shooting_feedback::get_or_default(const std::string& property, long default_value) {
     const prop_value value = properties::get_instance().get(property, prop_value{default_value});
-    console::write("feedback: " + std::to_string(std::get<long>(value)));
     return std::chrono::milliseconds{std::get<long>(value)};
 }
 
 std::chrono::milliseconds shooting_feedback::get_shooting_feedback_ms(const Hash weapon_hash) {
+    if (!init_called_) {
+        init();
+    }
+    
     if (const auto iter = shooting_feedback_times_.find(weapon_hash); iter != shooting_feedback_times_.end()) {
         return iter->second;
     }

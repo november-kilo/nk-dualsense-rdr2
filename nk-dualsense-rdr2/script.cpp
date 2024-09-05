@@ -1,10 +1,5 @@
 ﻿#include "script.h"
 
-#include "keyboard.h"
-#include "shooting_feedback.h"
-
-enum : int { device_enum_info_dim = 16 };
-
 std::unique_ptr<dual_sense_controller> initialize_controller() {
     auto ds_controller = std::make_unique<dual_sense_controller>();
     ds_controller->add_game_effects({
@@ -41,6 +36,7 @@ void on_script_register() {
             mod_context::get_instance().set_device_context(device_context);
             const auto controller = initialize_controller();
             shooting_feedback::init();
+            console::write("starting script loop");
             start_script_loop(controller);
         }
     }

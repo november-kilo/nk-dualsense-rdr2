@@ -19,7 +19,7 @@ public:
     void zero();
     void on_detach();
     void set_device_context(const DS5W::DeviceContext& new_device_context);
-    const DS5W::DeviceContext& get_device_context() const;
+    [[nodiscard]] const DS5W::DeviceContext& get_device_context() const;
 
 private:
     mod_context() = default;

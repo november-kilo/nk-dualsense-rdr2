@@ -3,7 +3,6 @@
 #include <chrono>
 #include <chrono>
 #include <string>
-#include <type_traits>
 #include <unordered_map>
 
 #include "../inc/natives.h"
@@ -20,7 +19,7 @@ namespace util {
 
 template<typename T>
 T util::clamp(const T value, const T min, const T max) {
-    static_assert(std::is_arithmetic<T>::value, "Arithmetic type required");
+    static_assert(std::is_arithmetic_v<T>, "Arithmetic type required");
     
     if (value < min) {
         return min;

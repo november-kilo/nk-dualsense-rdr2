@@ -13,13 +13,15 @@ class properties
 public:
     static properties& get_instance();
 
-    properties(properties const&) = delete;
-    void operator=(properties const&) = delete;
+    properties(const properties&) = delete;
+    properties(properties&&) = delete;
+    void operator=(const properties&) = delete;
+    void operator=(properties&&) = delete;
 
-    prop_value get(const std::string& key, prop_value default_value = std::string()) const;
+    [[nodiscard]] prop_value get(const std::string& key, prop_value default_value = std::string()) const;
 
 private:
     explicit properties(const std::string& filename);
 
-    std::map<std::string, std::string> data_;
+    std::map<std::string, std::string> props_;
 };

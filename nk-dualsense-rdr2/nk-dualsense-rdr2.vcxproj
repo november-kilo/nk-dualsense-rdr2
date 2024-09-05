@@ -9,14 +9,15 @@
   <ItemGroup>
     <ClCompile Include="console.cpp" />
     <ClCompile Include="dual_sense_controller.cpp" />
-    <ClCompile Include="game_effects.cpp" />
     <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mod_context.cpp" />
     <ClCompile Include="properties.cpp" />
     <ClCompile Include="script.cpp" />
+    <ClCompile Include="shooting_feedback_effect.cpp" />
     <ClCompile Include="util.cpp" />
     <ClCompile Include="shooting_feedback.cpp" />
+    <ClCompile Include="weapon_degradation_effect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\main.h" />
@@ -27,13 +28,14 @@
     <ClInclude Include="console.h" />
     <ClInclude Include="dual_sense_controller.h" />
     <ClInclude Include="game_effect.h" />
-    <ClInclude Include="game_effects.h" />
     <ClInclude Include="keyboard.h" />
     <ClInclude Include="mod_context.h" />
     <ClInclude Include="properties.h" />
     <ClInclude Include="script.h" />
+    <ClInclude Include="shooting_feedback_effect.h" />
     <ClInclude Include="util.h" />
     <ClInclude Include="shooting_feedback.h" />
+    <ClInclude Include="weapon_degradation_effect.h" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="etc\nk-dualsense-rdr2.properties" />

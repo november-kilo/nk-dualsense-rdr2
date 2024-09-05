@@ -5,7 +5,6 @@
 #include <windows.h>
 
 #include "game_effect.h"
-#include "game_effects.h"
 #include "mod_context.h"
 
 class dual_sense_controller

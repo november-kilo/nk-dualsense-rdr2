@@ -25,7 +25,7 @@ properties::properties(const std::string& filename) {
 
         if (std::string key; std::getline(is_line, key, '=')) {
             if (std::string value_str; std::getline(is_line, value_str))
-                data_[key] = value_str;
+                props_[key] = value_str;
         }
     }
 
@@ -37,9 +37,9 @@ properties::properties(const std::string& filename) {
 }
 
 prop_value properties::get(const std::string& key, prop_value default_value) const {
-    const auto it = data_.find(key);
+    const auto it = props_.find(key);
     
-    if (it == data_.end()) {
+    if (it == props_.end()) {
         return default_value;
     }
 
