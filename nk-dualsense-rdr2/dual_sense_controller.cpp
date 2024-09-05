@@ -18,7 +18,7 @@ void dual_sense_controller::set_right_trigger_resistance(const int resistance) {
     if (resistance == 0) {
         ds5_output_state.rightTriggerEffect.effectType = DS5W::TriggerEffectType::NoResitance;
     } else {
-        const unsigned char uc_resistance = static_cast<unsigned char>(resistance);
+        const unsigned char uc_resistance = util::to_unsigned_char(resistance);
         ds5_output_state.rightTriggerEffect.effectType = DS5W::TriggerEffectType::EffectEx;
         ds5_output_state.rightTriggerEffect.EffectEx.startPosition = 1;
         ds5_output_state.rightTriggerEffect.EffectEx.keepEffect = true;

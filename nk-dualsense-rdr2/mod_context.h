@@ -16,7 +16,7 @@ public:
     void operator=(const mod_context&) = delete;
     void operator=(mod_context&&) = delete;
 
-    void zero();
+    void zero_output_state();
     void on_detach();
     void set_device_context(const DS5W::DeviceContext& new_device_context);
     [[nodiscard]] const DS5W::DeviceContext& get_device_context() const;

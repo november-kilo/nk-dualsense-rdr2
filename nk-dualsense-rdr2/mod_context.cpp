@@ -1,6 +1,6 @@
 ﻿#include "mod_context.h"
 
-void mod_context::zero() {
+void mod_context::zero_output_state() {
     DS5W::DS5OutputState ds5_output_state;
     ZeroMemory(&ds5_output_state, sizeof(DS5W::DS5OutputState));
     ds5_output_state.rightTriggerEffect.effectType = DS5W::TriggerEffectType::NoResitance;
@@ -8,7 +8,7 @@ void mod_context::zero() {
 }
 
 void mod_context::on_detach() {
-    get_instance().zero();
+    get_instance().zero_output_state();
     DS5W::freeDeviceContext(&device_context_);
 }
 

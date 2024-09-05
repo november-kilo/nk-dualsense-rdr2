@@ -15,6 +15,7 @@ namespace time_util {
 namespace util {
     Hash get_hash(const std::string& key);
     template<typename T> T clamp(T value, T min, T max);
+    template<typename T> unsigned char to_unsigned_char(T value);
 }
 
 template<typename T>
@@ -30,6 +31,12 @@ T util::clamp(const T value, const T min, const T max) {
     }
         
     return value;
+}
+
+template <typename T>
+unsigned char util::to_unsigned_char(T value) {
+    static_assert(std::is_arithmetic_v<T>, "Arithmetic type required");
+    return static_cast<unsigned char>(clamp(value, 0, 255));
 }
 
 namespace player_util {

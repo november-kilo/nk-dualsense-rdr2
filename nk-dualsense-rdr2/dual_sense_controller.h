@@ -6,6 +6,7 @@
 
 #include "game_effect.h"
 #include "mod_context.h"
+#include "util.h"
 
 class dual_sense_controller
 {

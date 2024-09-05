@@ -16,7 +16,7 @@ void start_script_loop(const std::unique_ptr<dual_sense_controller>& controller)
     
     while (true) {
         if (IsKeyJustUp(0x4e)) {
-            mod_context::get_instance().zero();
+            mod_context::get_instance().zero_output_state();
         }
         
         controller->on_tick();
