@@ -65,3 +65,11 @@ prop_value properties::get(const std::string& key, prop_value default_value) con
 
     return value_str;
 }
+
+bool properties::get_bool(const std::string& key, const bool default_value) const {
+    if (const prop_value value = get(key, default_value); value.index() == 3) {
+        return std::get<bool>(value);
+    }
+    
+    return false;
+}

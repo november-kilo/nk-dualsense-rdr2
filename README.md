@@ -18,11 +18,13 @@ Place the three files  in `bin\Release` in Red Dead Redemption 2's game folder:
 
 `nk-dualsense-rdr2.asi` is the compiled mod.
 
-`nk-dualsense-rdr2.properties` provides configurable values used by the mod.
+`nk-dualsense-rdr2.properties` defines properties used by the mod.
 
 Remove these files before playing Red Dead Online.
 
 ## Development
+
+### Setup
 
 The header file, `ds5w.h`, from the DualSense-Windows release build
 goes into the ScriptHookRDR2 `inc/` directory.
@@ -30,9 +32,10 @@ goes into the ScriptHookRDR2 `inc/` directory.
 The lib file, `ds5w_x64.lib`, from the DualSense-Windows release
 build goes into the ScriptHookRDR2 `lib/` directory.
 
-One way to implement a new effect to the mod is to
-create a new effect by inheriting `game_effect`
-(`game_effect.h`) and overriding the `on_tick()` function.
-Then add the effect in the function `initialize_controller()`
-in `script.cpp`.
+### New effects
+One way to implement a new effect is to inherit `game_effect`
+(`game_effect.h`) and override the `on_tick()` function.
+Then add the effect to `effects_map`
+in `script.cpp`. Finally, update the properties file to enable
+the effect.
 The `on_tick()` function will get called every game tick.

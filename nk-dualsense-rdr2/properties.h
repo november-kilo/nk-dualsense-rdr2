@@ -19,9 +19,11 @@ public:
     void operator=(properties&&) = delete;
 
     [[nodiscard]] prop_value get(const std::string& key, prop_value default_value = std::string()) const;
+    [[nodiscard]] bool get_bool(const std::string& key, bool default_value = false) const;
 
 private:
     explicit properties(const std::string& filename);
+    ~properties() = default;
 
     std::map<std::string, std::string> props_;
 };
