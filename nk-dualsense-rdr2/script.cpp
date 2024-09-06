@@ -15,7 +15,7 @@ void start_script_loop(const std::unique_ptr<dual_sense_controller>& controller)
     srand(GetTickCount());
     
     while (true) {
-        if (IsKeyJustUp(0x4e)) {
+        if (IsKeyJustUp(0x4e)) { // N on keyboard
             mod_context::get_instance().zero_output_state();
         }
         
