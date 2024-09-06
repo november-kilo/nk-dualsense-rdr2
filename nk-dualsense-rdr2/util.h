@@ -36,7 +36,7 @@ T util::clamp(const T value, const T min, const T max) {
 template <typename T>
 unsigned char util::to_unsigned_char(T value) {
     static_assert(std::is_arithmetic_v<T>, "Arithmetic type required");
-    return static_cast<unsigned char>(clamp(value, 0, 255));
+    return static_cast<unsigned char>(clamp(value, static_cast<T>(0), static_cast<T>(255)));
 }
 
 namespace player_util {

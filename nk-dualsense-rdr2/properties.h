@@ -19,7 +19,7 @@ public:
     void operator=(properties&&) = delete;
 
     [[nodiscard]] prop_value get(const std::string& key, prop_value default_value = std::string()) const;
-    [[nodiscard]] bool get_bool(const std::string& key, bool default_value = false) const;
+    template <typename T> T get_or_default(const std::string& key, const T& default_value) const;
 
 private:
     explicit properties(const std::string& filename);
@@ -27,3 +27,12 @@ private:
 
     std::map<std::string, std::string> props_;
 };
+
+template <typename T>
+T properties::get_or_default(const std::string& key, const T& default_value) const {
+    const prop_value& value = get(key, default_value); 
+    if(auto val = std::get_if<T>(&value)) {
+        return *val;
+    }
+    return default_value;
+}

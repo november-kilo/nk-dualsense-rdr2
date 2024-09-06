@@ -11,7 +11,7 @@
 class dual_sense_controller
 {
 public:
-    static void set_right_trigger_rumble(bool rumbling);
+    static void set_rumble(unsigned char left_rumble, unsigned char right_rumble);
     static void set_right_trigger_resistance(int resistance);
     
     void on_tick() const;

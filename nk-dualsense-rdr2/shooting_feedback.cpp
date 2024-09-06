@@ -5,7 +5,7 @@
 #include "util.h"
 
 bool shooting_feedback::init_called_ = false;
-std::chrono::milliseconds shooting_feedback::default_shooting_feedback_ms_ = std::chrono::milliseconds(100);
+std::chrono::milliseconds shooting_feedback::default_milliseconds_to_wait_ = std::chrono::milliseconds(100);
 std::unordered_map<Hash, std::chrono::milliseconds> shooting_feedback::shooting_feedback_times_;
 
 void shooting_feedback::init() {
@@ -18,7 +18,7 @@ void shooting_feedback::init() {
     init_called_ = true;
 }
 
-std::chrono::milliseconds shooting_feedback::get_shooting_feedback_ms(const Hash weapon_hash) {
+std::chrono::milliseconds shooting_feedback::get_milliseconds_to_wait(const Hash weapon_hash) {
     if (!init_called_) {
         init();
     }
@@ -27,7 +27,17 @@ std::chrono::milliseconds shooting_feedback::get_shooting_feedback_ms(const Hash
         return iter->second;
     }
 
-    return default_shooting_feedback_ms_;
+    return default_milliseconds_to_wait_;
+}
+
+unsigned char shooting_feedback::get_left_rumble() {
+    const long value = properties::get_instance().get_or_default("shooting_feedback_left_rumble", static_cast<long>(0));
+    return util::to_unsigned_char(value);
+}
+
+unsigned char shooting_feedback::get_right_rumble() {
+    const long value = properties::get_instance().get_or_default("shooting_feedback_right_rumble", static_cast<long>(255));
+    return util::to_unsigned_char(value);
 }
 
 void shooting_feedback::add_shooting_feedback_ms(const std::string& ammo_type,
@@ -37,8 +47,8 @@ void shooting_feedback::add_shooting_feedback_ms(const std::string& ammo_type,
 }
 
 std::chrono::milliseconds shooting_feedback::get_or_default_feedback_ms(const std::string& property, const long default_value) {
-    const prop_value value = properties::get_instance().get(property, prop_value{default_value});
-    return std::chrono::milliseconds{std::get<long>(value)};
+    const long value = properties::get_instance().get_or_default(property, default_value);
+    return std::chrono::milliseconds{value};
 }
 
 std::vector<std::pair<std::string, std::chrono::milliseconds>> shooting_feedback::create_shooting_feedback_ms_array() {
