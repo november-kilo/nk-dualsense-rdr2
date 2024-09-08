@@ -16,7 +16,6 @@
     <ClCompile Include="script.cpp" />
     <ClCompile Include="shooting_feedback_effect.cpp" />
     <ClCompile Include="util.cpp" />
-    <ClCompile Include="shooting_feedback.cpp" />
     <ClCompile Include="weapon_degradation_effect.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -34,7 +33,6 @@
     <ClInclude Include="script.h" />
     <ClInclude Include="shooting_feedback_effect.h" />
     <ClInclude Include="util.h" />
-    <ClInclude Include="shooting_feedback.h" />
     <ClInclude Include="weapon_degradation_effect.h" />
   </ItemGroup>
   <ItemGroup>

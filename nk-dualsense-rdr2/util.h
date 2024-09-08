@@ -45,5 +45,6 @@ namespace player_util {
     float get_weapon_degradation();
     bool is_shooting();
     bool is_weapon_gun();
+    bool is_weapon_cannon();
     bool is_gun_silent();
 }

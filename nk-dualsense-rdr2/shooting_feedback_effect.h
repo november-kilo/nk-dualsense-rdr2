@@ -5,7 +5,6 @@
 #include "dual_sense_controller.h"
 #include "game_effect.h"
 #include "properties.h"
-#include "shooting_feedback.h"
 #include "util.h"
 
 class shooting_feedback_effect final : public game_effect
@@ -20,6 +19,6 @@ private:
     unsigned char left_rumble_;
     unsigned char right_rumble_;
 
-    
     [[nodiscard]] bool should_feedback() const;
+    static unsigned char get_rumble(const std::string& key, long default_value);
 };

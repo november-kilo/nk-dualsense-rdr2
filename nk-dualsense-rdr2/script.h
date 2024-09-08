@@ -9,7 +9,6 @@
 #include "keyboard.h"
 #include "mod_context.h"
 #include "properties.h"
-#include "shooting_feedback.h"
 #include "shooting_feedback_effect.h"
 #include "weapon_degradation_effect.h"
 #include "../inc/ds5w.h"

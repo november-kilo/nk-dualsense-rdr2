@@ -10,20 +10,15 @@ namespace {
     }
 }
 
-void console::create_console() {
-#ifdef SHOULD_OPEN_CONSOLE
-    if (AllocConsole()) {
+void console::create_console(const bool for_real) {
+    if (for_real && AllocConsole()) {
         open_file_stream("CONIN$", "r", stdin);
         open_file_stream("CONOUT$", "w", stdout);
         open_file_stream("CONOUT$", "w", stderr);
+        write("console opened");
     }
-
-    write("console opened");
-#endif
 }
 
 void console::write(const std::string& text) {
     std::cout << "[nk-dualsense-rdr2] " << text << '\n';
 }
-
-

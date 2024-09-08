@@ -1,5 +1,7 @@
 ﻿#include "util.h"
 
+#include "console.h"
+
 Hash util::get_hash(const std::string& key) {
     return GAMEPLAY::GET_HASH_KEY(const_cast<char*>(key.c_str()));
 }
@@ -18,8 +20,15 @@ Hash player_util::get_ammo_type() {
 }
 
 Hash player_util::get_weapon() {
+    const Ped player_ped = PLAYER::PLAYER_PED_ID();
     Hash weapon;
-    WEAPON::GET_CURRENT_PED_WEAPON(PLAYER::PLAYER_PED_ID(), &weapon, 0, 0, 0);
+
+    if (!WEAPON::GET_CURRENT_PED_VEHICLE_WEAPON(player_ped, &weapon)) {
+        if (!WEAPON::GET_CURRENT_PED_WEAPON(PLAYER::PLAYER_PED_ID(), &weapon, 0, 0, 0)) {
+            return 0;
+        }
+    }
+    
     return weapon;
 }
 
@@ -34,6 +43,15 @@ bool player_util::is_shooting() {
 
 bool player_util::is_weapon_gun() {
     return WEAPON::_0x705BE297EEBDB95D(get_weapon());
+}
+
+bool player_util::is_weapon_cannon() {
+    static constexpr Hash gatling_gun = 3666182381;
+    static constexpr Hash maxim_gun = 3101324918;
+    static constexpr Hash hotchkiss_cannon = 2465730487;
+    const Hash player_weapon = get_weapon();
+    
+    return player_weapon == gatling_gun || player_weapon == maxim_gun || player_weapon == hotchkiss_cannon;
 }
 
 bool player_util::is_gun_silent() {

@@ -34,7 +34,7 @@ void start_script_loop() {
 }
 
 void on_script_register() {
-    console::create_console();
+    console::create_console(properties::get_instance().get_or_default("open_console", false));
     DS5W::DeviceEnumInfo device_enum_info[device_enum_info_dim];
     unsigned int controller_count = 0;
     if (DS5W::enumDevices(device_enum_info, device_enum_info_dim, &controller_count) == DS5W_OK) {
@@ -43,7 +43,6 @@ void on_script_register() {
 
             if (DS5W_SUCCESS(DS5W::initDeviceContext(&device_enum_info[0], &device_context))) {
                 mod_context::get_instance().set_device_context(device_context);
-                shooting_feedback::init();
                 start_script_loop();
             }
         }
