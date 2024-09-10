@@ -46,5 +46,4 @@ namespace player_util {
     bool is_shooting();
     bool is_weapon_gun();
     bool is_weapon_cannon();
-    bool is_gun_silent();
 }

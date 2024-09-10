@@ -15,8 +15,10 @@ std::chrono::milliseconds time_util::time_now() {
 }
 
 Hash player_util::get_ammo_type() {
-    const Entity weapon_entity = WEAPON::GET_CURRENT_PED_WEAPON_ENTITY_INDEX(PLAYER::PLAYER_PED_ID(), 0);
-    return WEAPON::_0x7E7B19A4355FEE13(PLAYER::PLAYER_PED_ID(), weapon_entity);
+    const Ped player_ped = PLAYER::PLAYER_PED_ID();
+    const Entity weapon_entity = WEAPON::GET_CURRENT_PED_WEAPON_ENTITY_INDEX(player_ped, 0);
+    
+    return WEAPON::_0x7E7B19A4355FEE13(player_ped, weapon_entity);
 }
 
 Hash player_util::get_weapon() {
@@ -52,10 +54,4 @@ bool player_util::is_weapon_cannon() {
     const Hash player_weapon = get_weapon();
     
     return player_weapon == gatling_gun || player_weapon == maxim_gun || player_weapon == hotchkiss_cannon;
-}
-
-bool player_util::is_gun_silent() {
-    const bool is_gun = is_weapon_gun();
-    const bool is_silent = WEAPON::_0x5809DBCA0A37C82B(get_weapon());
-    return !is_gun && is_silent;
 }

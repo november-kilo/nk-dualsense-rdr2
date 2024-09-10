@@ -9,7 +9,7 @@ void add_effects_to_controller(const std::unique_ptr<dual_sense_controller>& ds_
     for (const auto& [effect_fn_key, effect_fn] : effects_map) {
         if (properties::get_instance().get_or_default(effect_fn_key, false)) {
             ds_controller->add_game_effect(effect_fn());
-            console::write("added " + effect_fn_key);
+            console::write("added effect " + effect_fn_key);
         }
     }
 }

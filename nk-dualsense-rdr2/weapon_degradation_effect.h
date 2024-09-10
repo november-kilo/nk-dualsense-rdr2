@@ -11,4 +11,5 @@ public:
 
 private:
     static int convert_weapon_degradation_to_resistance(float weapon_degradation);
+    static int calculate_trigger_resistance();
 };
