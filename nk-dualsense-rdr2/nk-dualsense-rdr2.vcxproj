@@ -7,16 +7,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="console.cpp" />
-    <ClCompile Include="dual_sense_controller.cpp" />
-    <ClCompile Include="keyboard.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="mod_context.cpp" />
-    <ClCompile Include="properties.cpp" />
-    <ClCompile Include="script.cpp" />
-    <ClCompile Include="shooting_feedback_effect.cpp" />
-    <ClCompile Include="util.cpp" />
-    <ClCompile Include="weapon_degradation_effect.cpp" />
+    <ClCompile Include="src/console.cpp" />
+    <ClCompile Include="src/dual_sense_controller.cpp" />
+    <ClCompile Include="src/keyboard.cpp" />
+    <ClCompile Include="src/main.cpp" />
+    <ClCompile Include="src/mod_context.cpp" />
+    <ClCompile Include="src/properties.cpp" />
+    <ClCompile Include="src/script.cpp" />
+    <ClCompile Include="src/shooting_feedback_effect.cpp" />
+    <ClCompile Include="src/util.cpp" />
+    <ClCompile Include="src/weapon_degradation_effect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\main.h" />
@@ -24,16 +24,16 @@
     <ClInclude Include="..\inc\natives.h" />
     <ClInclude Include="..\inc\types.h" />
     <ClInclude Include="..\inc\ds5w.h" />
-    <ClInclude Include="console.h" />
-    <ClInclude Include="dual_sense_controller.h" />
-    <ClInclude Include="game_effect.h" />
-    <ClInclude Include="keyboard.h" />
-    <ClInclude Include="mod_context.h" />
-    <ClInclude Include="properties.h" />
-    <ClInclude Include="script.h" />
-    <ClInclude Include="shooting_feedback_effect.h" />
-    <ClInclude Include="util.h" />
-    <ClInclude Include="weapon_degradation_effect.h" />
+    <ClInclude Include="src/console.h" />
+    <ClInclude Include="src/dual_sense_controller.h" />
+    <ClInclude Include="src/game_effect.h" />
+    <ClInclude Include="src/keyboard.h" />
+    <ClInclude Include="src/mod_context.h" />
+    <ClInclude Include="src/properties.h" />
+    <ClInclude Include="src/script.h" />
+    <ClInclude Include="src/shooting_feedback_effect.h" />
+    <ClInclude Include="src/util.h" />
+    <ClInclude Include="src/weapon_degradation_effect.h" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="etc\nk-dualsense-rdr2.properties" />

@@ -5,8 +5,8 @@
 #include <string>
 #include <unordered_map>
 
-#include "../inc/natives.h"
-#include "../inc/types.h"
+#include "../../inc/natives.h"
+#include "../../inc/types.h"
 
 namespace time_util {
     std::chrono::milliseconds time_now();

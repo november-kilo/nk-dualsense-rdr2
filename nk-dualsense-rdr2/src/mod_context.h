@@ -2,7 +2,7 @@
 
 #include <windows.h>
 
-#include "../inc/ds5w.h"
+#include "../../inc/ds5w.h"
 
 class mod_context {
 public:

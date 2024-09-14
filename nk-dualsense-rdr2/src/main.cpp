@@ -1,4 +1,4 @@
-#include "../inc/main.h"
+#include "../../inc/main.h"
 
 #include "keyboard.h"
 #include "mod_context.h"

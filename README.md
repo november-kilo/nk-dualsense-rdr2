@@ -1,4 +1,4 @@
-# nk-2dualsense-rdr2 mod
+# nk-dualsense-rdr2 mod
 
 This is a Red Dead Redemption 2 single-player mod
 implemented with Alexander Blade's [ScriptHookRDR2](http://dev-c.com/rdr2/scripthookrdr2/)
