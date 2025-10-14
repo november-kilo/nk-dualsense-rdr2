@@ -2,7 +2,7 @@
 
 std::unordered_map<std::string, effect_generator> effects_map = {
     {"shooting_feedback_effect", []{ return std::make_shared<shooting_feedback_effect>(); }},
-    {"weapon_degradation_effect", []{ return std::make_shared<weapon_degradation_effect>(); }},
+    {"weapon_degradation_effect", []{ return std::make_shared<weapon_degradation_effect>(); }}
 };
 
 void add_effects_to_controller(const std::unique_ptr<dual_sense_controller>& ds_controller) {

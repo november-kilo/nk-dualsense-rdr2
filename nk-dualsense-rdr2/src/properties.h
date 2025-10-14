@@ -6,7 +6,7 @@
 #include <string>
 #include <variant>
 
-using prop_value = std::variant<std::string, long, double, bool>;
+using prop_value = std::variant<std::string, long, double, int, bool>;
 
 class properties
 {

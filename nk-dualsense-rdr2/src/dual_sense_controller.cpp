@@ -30,6 +30,18 @@ void dual_sense_controller::set_right_trigger_resistance(const int resistance) {
     DS5W::setDeviceOutputState(&device_context, &ds5_output_state);
 }
 
+void dual_sense_controller::set_lightbar(const unsigned char r, const unsigned char g, const unsigned char b) {
+    DS5W::DS5OutputState ds5_output_state;
+    ZeroMemory(&ds5_output_state, sizeof(DS5W::DS5OutputState));
+    ds5_output_state.playerLeds.brightness = DS5W::HIGH;
+    ds5_output_state.lightbar.r = r;
+    ds5_output_state.lightbar.g = g;
+    ds5_output_state.lightbar.b = b;
+    
+    DS5W::DeviceContext device_context = mod_context::get_instance().get_device_context();
+    DS5W::setDeviceOutputState(&device_context, &ds5_output_state);
+}
+
 void dual_sense_controller::on_tick() const {
     for (const auto& effect : game_effects_) {
         effect->on_tick();

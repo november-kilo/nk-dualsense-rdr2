@@ -6,6 +6,10 @@ Hash util::get_hash(const std::string& key) {
     return GAMEPLAY::GET_HASH_KEY(const_cast<char*>(key.c_str()));
 }
 
+char* util::create_string(const std::string& text) {
+    return GAMEPLAY::CREATE_STRING(10, const_cast<char*>("LITERAL_STRING"), const_cast<char*>(text.c_str()));
+}
+
 std::chrono::milliseconds time_util::time_now() {
     const auto now = std::chrono::system_clock::now();
     const auto now_ms = std::chrono::time_point_cast<std::chrono::milliseconds>(now);
@@ -55,3 +59,37 @@ bool player_util::is_weapon_cannon() {
     
     return player_weapon == gatling_gun || player_weapon == maxim_gun || player_weapon == hotchkiss_cannon;
 }
+
+void ui_util::subtitle(const std::string& text) {
+    char* c_text = util::create_string(text);
+    UILOG::_0xFA233F8FE190514C(reinterpret_cast<Any*>(c_text));
+    UILOG::_0xE9990552DEC71600();
+    UILOG::_0xA3108D6981A5CADB();
+    UILOG::_0xDFF0D417277B41F8();
+}
+
+void ui_util::debug(const std::string& text) {
+    char* c_text = util::create_string(text);
+    UI::DRAW_TEXT(c_text, 0, 0);
+}
+
+unsigned char weapon_util::degradation_r(const int value, const int scheme) {
+    return util::to_unsigned_char(value);    
+}
+
+unsigned char weapon_util::degradation_g(const int value, const int scheme) {
+    if (scheme == 0) {
+        return util::to_unsigned_char(255 - value);    
+    }
+    return 0;
+}
+
+unsigned char weapon_util::degradation_b(const int value, const int scheme) {
+    if (scheme == 0) {
+        return 0;
+    }
+
+    return util::to_unsigned_char(255 - value);
+}
+
+

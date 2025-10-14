@@ -14,6 +14,7 @@ namespace time_util {
 
 namespace util {
     Hash get_hash(const std::string& key);
+    char* create_string(const std::string& text);
     template<typename T> T clamp(T value, T min, T max);
     template<typename T> unsigned char to_unsigned_char(T value);
 }
@@ -46,4 +47,15 @@ namespace player_util {
     bool is_shooting();
     bool is_weapon_gun();
     bool is_weapon_cannon();
+}
+
+namespace ui_util {
+    void subtitle(const std::string& text);
+    void debug(const std::string& text);
+}
+
+namespace weapon_util {
+    unsigned char degradation_r(int value, int scheme);
+    unsigned char degradation_g(int value, int scheme);
+    unsigned char degradation_b(int value, int scheme);
 }
